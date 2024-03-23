@@ -17,14 +17,42 @@ struct ConfirmSignUpView: View {
     @State var shouldShowLogin: Bool = false
     
     var body: some View {
-        VStack {
-            TextField("Verification Code", text: $confirmationCode)
-
-            Button("Submit") {
-                Task { await confirmSignUp() }
+        VStack (spacing: 30){
+            
+            Text("Verification")
+                .fontWeight(.bold)
+                .font(Font.system(size: 50))
+                .foregroundColor(Color.blue)
+                .padding(.bottom, 100)
+            
+            
+            VStack (spacing:25){
+                TextField("Verification Code", text: $confirmationCode)
+                    .padding(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 0.5).frame(height: 45))
+                    .multilineTextAlignment(.center)
             }
-     
+            
+            Button(action: {
+                Task {
+                    await confirmSignUp()
+                }
+                
+            }){
+                Text("Submit")
+                    .modifier(CustomTextM(fontName: "MavenPro-Bold", fontSize: 16, fontColor: Color.white))
+                
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56, alignment: .leading)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+            }
+            
+            
+            
         }
+        .padding(.horizontal,30)
+        .padding(.vertical, 25)
         // 2
         .navigationDestination(isPresented: .constant(shouldShowLogin)) {
             LoginView()
@@ -50,5 +78,14 @@ struct ConfirmSignUpView: View {
         } catch {
             print(error)
         }
+    }
+}
+
+
+
+
+struct Previews_ConfirmSignup_Previews: PreviewProvider {
+    static var previews: some View {
+        ConfirmSignUpView(username: "Muaz")
     }
 }

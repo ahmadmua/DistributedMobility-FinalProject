@@ -35,10 +35,18 @@ struct SignUpView: View {
             
             // Form
             VStack(spacing: 25){
-                TextField("Email", text: $username)
+                TextField("Username", text: $username)
                     .padding(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 0.5).frame(height: 45))
                     .multilineTextAlignment(.center)
+                
+                VStack(spacing:10){
+                    TextField("Email", text: $email)
+                        .padding(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 0.5).frame(height: 45))
+                        .multilineTextAlignment(.center)
+                    
+                }
                 
                 VStack(spacing:10){
                     SecureField("Password", text: $password)

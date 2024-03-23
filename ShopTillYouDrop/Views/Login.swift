@@ -32,7 +32,7 @@ struct LoginView: View {
                 
                 // Form
                 VStack(spacing: 25){
-                    TextField("Email", text: $username)
+                    TextField("Username", text: $username)
                         .padding(10)
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 0.5).frame(height: 45))
                         .multilineTextAlignment(.center)
@@ -61,9 +61,6 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
-                .alert(self.msg, isPresented: $showingAlert) {
-                            Button("OK", role: .cancel) { }
-                        }
                 
                 Spacer()
                 
@@ -83,16 +80,6 @@ struct LoginView: View {
             .padding(.horizontal,30)
             .padding(.vertical, 25)
                
-//                TextField("Email", text: $username)
-//                SecureField("Password", text: $password)
-//
-//                Button("Log In") {
-//                    Task { await login() }
-//                }
-//                Spacer()
-//                Button("Don't have an account? Sign up.", action: { shouldShowSignUp = true })
-//            }
-//
             .navigationDestination(isPresented: $shouldShowSignUp) {
                 SignUpView(showLogin: { shouldShowSignUp = false })
                     .navigationBarBackButtonHidden(true)
@@ -116,8 +103,13 @@ struct LoginView: View {
             }
         } catch {
             print(error)
-            showingAlert = true
-            msg = error.localizedDescription
         }
+    }
+}
+
+
+struct Previews_Login_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView()
     }
 }
