@@ -7,8 +7,18 @@
 
 import SwiftUI
 import Amplify
+
 struct UserProfileView: View {
     
+    // 1
+    @State var isImagePickerVisible: Bool = false
+    // 2
+    @State var newAvatarImage: UIImage?
+    // 3
+    var avatarState: AvatarState {
+        newAvatarImage.flatMap({ AvatarState.local(image: $0) })
+        ?? .remote(avatarKey: userState.userAvatarKey)
+    }
     // 1
     @EnvironmentObject var userState: UserState
     // 2
@@ -20,12 +30,17 @@ struct UserProfileView: View {
             // 2
             VStack {
                 
-                Button(action: {}) {
-                    // 1
+                Button(action: { isImagePickerVisible = true }) {
                     AvatarView(
-                        state: .local(image: UIImage(systemName: "person")!),
+                        state: avatarState,
                         fromMemoryCache: true
                     )
+                    .onChange(of: avatarState) { _ in
+                        Task {
+                            await uploadNewAvatar()
+                        }
+                    }
+                    // 1
                     .frame(width: 75, height: 75)
                 }
                 // 2
@@ -41,6 +56,9 @@ struct UserProfileView: View {
                     }
                 }
                 
+            }
+            .sheet(isPresented: $isImagePickerVisible) {
+                ImagePickerView(image: $newAvatarImage)
             }
             .navigationTitle("My Account")
             // 3
@@ -67,6 +85,21 @@ struct UserProfileView: View {
             print("Signed out")
             // 2
             _ = try await Amplify.DataStore.clear()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func uploadNewAvatar() async {
+        // 1
+        guard let avatarData = newAvatarImage?.jpegData(compressionQuality: 1) else { return }
+        do {
+            // 2
+            let avatarKey = try await Amplify.Storage.uploadData(
+                key: userState.userAvatarKey,
+                data: avatarData
+            ).value
+            print("Finished uploading:", avatarKey)
         } catch {
             print(error)
         }
