@@ -14,6 +14,8 @@ import AWSS3StoragePlugin
 @main
 struct ShopTillYouDropApp: App {
     
+    let classifier = ImageClassifier()
+    
     init() {
         
         configureAmplify()
@@ -34,7 +36,7 @@ struct ShopTillYouDropApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SessionView()
+            SessionView().environmentObject(classifier)
         }
     }
 }

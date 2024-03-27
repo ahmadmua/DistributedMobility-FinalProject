@@ -27,6 +27,14 @@
 		024393B32BAE200500263F15 /* AmplifyImage in Frameworks */ = {isa = PBXBuildFile; productRef = 024393B22BAE200500263F15 /* AmplifyImage */; };
 		02A6CDE12BB271A6003A3FAD /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02A6CDE02BB271A6003A3FAD /* AWSS3StoragePlugin */; };
 		02A6CDE42BB27361003A3FAD /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDE32BB27361003A3FAD /* ImagePickerView.swift */; };
+		02A6CDE62BB27965003A3FAD /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDE52BB27965003A3FAD /* Homepage.swift */; };
+		02A6CDE82BB27B0F003A3FAD /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDE72BB27B0F003A3FAD /* Input.swift */; };
+		02A6CDEA2BB27BC4003A3FAD /* LibraryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDE92BB27BC4003A3FAD /* LibraryPicker.swift */; };
+		02A6CDEC2BB27C1F003A3FAD /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDEB2BB27C1F003A3FAD /* Classifier.swift */; };
+		02A6CDEE2BB27C79003A3FAD /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDED2BB27C79003A3FAD /* ImageClassifier.swift */; };
+		02A6CDF02BB27CE4003A3FAD /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDEF2BB27CE3003A3FAD /* MobileNetV2.mlmodel */; };
+		02A6CDF42BB386E2003A3FAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDF32BB386E2003A3FAD /* Product.swift */; };
+		02A6CDF82BB387CC003A3FAD /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDF72BB387CC003A3FAD /* ProductView.swift */; };
 		0DDCFE163DB4F763B04CCB01 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E40C4C84A2D51A0BD47BB /* AmplifyModels.swift */; };
 		27AA83A9B20ED8B249EB3AED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DF7E36FA4A6A0E17082E7 /* User.swift */; };
 		CD9532568E41E346560876A7 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DC5336CD7AA84BDEC2397 /* amplifyconfiguration.json */; };
@@ -51,6 +59,14 @@
 		024393AC2BAE1C0400263F15 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		024393AF2BAE1DA000263F15 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		02A6CDE32BB27361003A3FAD /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		02A6CDE52BB27965003A3FAD /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
+		02A6CDE72BB27B0F003A3FAD /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		02A6CDE92BB27BC4003A3FAD /* LibraryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPicker.swift; sourceTree = "<group>"; };
+		02A6CDEB2BB27C1F003A3FAD /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		02A6CDED2BB27C79003A3FAD /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
+		02A6CDEF2BB27CE3003A3FAD /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
+		02A6CDF32BB386E2003A3FAD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		02A6CDF72BB387CC003A3FAD /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		0BF00ADDF096579884C9D65E /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		322E40C4C84A2D51A0BD47BB /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		4A6DC5336CD7AA84BDEC2397 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
@@ -97,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				02A6CDE22BB27353003A3FAD /* Controller */,
-				024393A32BAE1A6F00263F15 /* Additional */,
+				024393A32BAE1A6F00263F15 /* Model */,
 				0243939E2BAE146100263F15 /* Components */,
 				024393942BAC96B600263F15 /* Views */,
 				024393822BAC920300263F15 /* ShopTillYouDropApp.swift */,
@@ -119,12 +135,16 @@
 		024393942BAC96B600263F15 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				024393A82BAE1AEB00263F15 /* SessionView.swift */,
 				024393952BAC96DA00263F15 /* Login.swift */,
 				024393972BAC970500263F15 /* Signup.swift */,
 				024393992BAC972F00263F15 /* ConfirmSignup.swift */,
 				024393AA2BAE1BBE00263F15 /* UserProfile.swift */,
 				024393AC2BAE1C0400263F15 /* MainTab.swift */,
 				024393AF2BAE1DA000263F15 /* AvatarView.swift */,
+				02A6CDE52BB27965003A3FAD /* Homepage.swift */,
+				02A6CDE72BB27B0F003A3FAD /* Input.swift */,
+				02A6CDF72BB387CC003A3FAD /* ProductView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,25 +159,29 @@
 		0243939E2BAE146100263F15 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				02A6CDEF2BB27CE3003A3FAD /* MobileNetV2.mlmodel */,
 				0243939F2BAE147100263F15 /* Components.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		024393A32BAE1A6F00263F15 /* Additional */ = {
+		024393A32BAE1A6F00263F15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				024393A42BAE1A8600263F15 /* UserState.swift */,
 				024393A62BAE1AD000263F15 /* AppError.swift */,
-				024393A82BAE1AEB00263F15 /* SessionView.swift */,
+				02A6CDEB2BB27C1F003A3FAD /* Classifier.swift */,
+				02A6CDED2BB27C79003A3FAD /* ImageClassifier.swift */,
+				02A6CDF32BB386E2003A3FAD /* Product.swift */,
 			);
-			path = Additional;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		02A6CDE22BB27353003A3FAD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				02A6CDE32BB27361003A3FAD /* ImagePickerView.swift */,
+				02A6CDE92BB27BC4003A3FAD /* LibraryPicker.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,21 +288,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A6CDF82BB387CC003A3FAD /* ProductView.swift in Sources */,
+				02A6CDEC2BB27C1F003A3FAD /* Classifier.swift in Sources */,
 				024393962BAC96DA00263F15 /* Login.swift in Sources */,
 				024393A02BAE147100263F15 /* Components.swift in Sources */,
+				02A6CDE82BB27B0F003A3FAD /* Input.swift in Sources */,
 				024393982BAC970500263F15 /* Signup.swift in Sources */,
 				0243939A2BAC972F00263F15 /* ConfirmSignup.swift in Sources */,
 				024393852BAC920300263F15 /* ContentView.swift in Sources */,
 				024393832BAC920300263F15 /* ShopTillYouDropApp.swift in Sources */,
 				024393AD2BAE1C0400263F15 /* MainTab.swift in Sources */,
 				024393A52BAE1A8600263F15 /* UserState.swift in Sources */,
+				02A6CDEA2BB27BC4003A3FAD /* LibraryPicker.swift in Sources */,
 				024393A92BAE1AEB00263F15 /* SessionView.swift in Sources */,
 				0DDCFE163DB4F763B04CCB01 /* AmplifyModels.swift in Sources */,
 				024393A72BAE1AD000263F15 /* AppError.swift in Sources */,
 				D45F7F934093A35533B52F96 /* User+Schema.swift in Sources */,
 				02A6CDE42BB27361003A3FAD /* ImagePickerView.swift in Sources */,
+				02A6CDE62BB27965003A3FAD /* Homepage.swift in Sources */,
+				02A6CDF42BB386E2003A3FAD /* Product.swift in Sources */,
 				27AA83A9B20ED8B249EB3AED /* User.swift in Sources */,
 				024393B02BAE1DA000263F15 /* AvatarView.swift in Sources */,
+				02A6CDEE2BB27C79003A3FAD /* ImageClassifier.swift in Sources */,
+				02A6CDF02BB27CE4003A3FAD /* MobileNetV2.mlmodel in Sources */,
 				024393AB2BAE1BBE00263F15 /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,15 +10,9 @@ import SwiftUI
 
 struct MainTabView: View {
     var body: some View {
-        TabView {
             
-//                .tabItem {
-//                    Label("Home", systemImage: "house")
-//                }
-            UserProfileView()
-                .tabItem {
-                    Label("Account", systemImage: "person")
-                }
+            Homepage()
+
         }
     }
-}
+
