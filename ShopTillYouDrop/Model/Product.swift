@@ -7,13 +7,20 @@
 
 import Foundation
 
-struct Product: Codable, Identifiable {
-    let id = UUID()
-    let title: String
-    let img: String
-    let price: String
-    let shop: String
-    
-    
-
+struct ProductResponse: Codable {
+    let data: [ProductData]
 }
+
+struct ProductData: Codable, Identifiable {
+    let id = UUID()
+    let product_title: String
+    let product_photos: [String]
+    let offer: Offer
+}
+
+struct Offer: Codable {
+    let store_name: String
+    let price: String
+}
+
+
