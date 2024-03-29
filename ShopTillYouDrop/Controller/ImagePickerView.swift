@@ -49,3 +49,4 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         imagePickerView.image = image
     }
 }
+

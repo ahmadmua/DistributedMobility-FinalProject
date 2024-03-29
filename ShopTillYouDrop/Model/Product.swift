@@ -10,5 +10,10 @@ import Foundation
 struct Product: Codable, Identifiable {
     let id = UUID()
     let title: String
+    let img: String
+    let price: String
+    let shop: String
+    
+    
 
 }
