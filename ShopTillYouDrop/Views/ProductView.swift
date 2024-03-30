@@ -16,7 +16,7 @@ struct ProductView: View {
     @State private var sortOrder: String = "BEST_MATCH"
     
     var body: some View {
-        NavigationView {
+    
             VStack {
                 Picker("Sort Order", selection: $sortOrder) {
                     Text("Best Match").tag("BEST_MATCH")
@@ -27,49 +27,64 @@ struct ProductView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
                 
-                List(products, id: \.id) { product in
+                List(products, id: \.product_id) { product in
                     
-                    HStack {
-                        AsyncImage(url: URL(string: product.product_photos.first ?? "")) { image in
-                            image.resizable().scaledToFit().frame(width: 50, height: 50)
-                        } placeholder: {
-                            ProgressView()
-                        }
+                    NavigationLink(destination: ProductDetailView(product: product)) {
                         
-                        VStack(alignment: .trailing) {
-                            
-                            HStack{
-                                
-                                Text(product.product_title)
-                                    .font(.headline)
-                                Spacer()
-                                
+                        HStack {
+                            AsyncImage(url: URL(string: product.product_photos.first ?? "")) { image in
+                                image.resizable().scaledToFit().frame(width: 50, height: 50)
+                            } placeholder: {
+                                ProgressView()
                             }
                             
-                            HStack {
+                            VStack(alignment: .trailing) {
                                 
-                                Text("\(product.offer.store_name)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                HStack{
+                                    
+                                    Text(product.product_title)
+                                        .font(.headline)
+                                    Spacer()
+                                    
+                                }
                                 
-                                Text(product.offer.price)
-                                    .font(.subheadline)
-                                    .foregroundColor(.green)
-                                
-                                Spacer()
+                                HStack {
+                                    
+                                    Text("\(product.offer.store_name)")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                    
+                                    Text(product.offer.price)
+                                        .font(.subheadline)
+                                        .foregroundColor(.green)
+                                    
+                                    
+                                    
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                    
+                                        .frame(width: 9, height: 9)
+                                    
+                                    
+                                    Text("\(String(format: "%.2f", product.product_rating ?? "N/A"))")
+                                        .font(.subheadline)
+                                        .foregroundColor(.black)
+                                    
+                                    
+                                    Spacer()
+                                    
+                                }
                                 
                             }
-                            
+                            .padding(.leading, 10)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        .padding(.leading, 10)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    
-                    
                 }
                 .navigationTitle("Products")
+                
             }
-        }
+        
         .onAppear(perform: fetchData)
         .onChange(of: sortOrder, perform: { _ in
             fetchSortedData()

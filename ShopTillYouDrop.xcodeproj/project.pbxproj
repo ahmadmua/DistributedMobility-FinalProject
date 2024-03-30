@@ -35,6 +35,7 @@
 		02A6CDF02BB27CE4003A3FAD /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDEF2BB27CE3003A3FAD /* MobileNetV2.mlmodel */; };
 		02A6CDF42BB386E2003A3FAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDF32BB386E2003A3FAD /* Product.swift */; };
 		02A6CDF82BB387CC003A3FAD /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDF72BB387CC003A3FAD /* ProductView.swift */; };
+		02C20AF02BB6D3830085852E /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C20AEF2BB6D3830085852E /* ProductDetailView.swift */; };
 		0DDCFE163DB4F763B04CCB01 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E40C4C84A2D51A0BD47BB /* AmplifyModels.swift */; };
 		27AA83A9B20ED8B249EB3AED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DF7E36FA4A6A0E17082E7 /* User.swift */; };
 		CD9532568E41E346560876A7 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DC5336CD7AA84BDEC2397 /* amplifyconfiguration.json */; };
@@ -67,6 +68,7 @@
 		02A6CDEF2BB27CE3003A3FAD /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		02A6CDF32BB386E2003A3FAD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		02A6CDF72BB387CC003A3FAD /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		02C20AEF2BB6D3830085852E /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		0BF00ADDF096579884C9D65E /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		322E40C4C84A2D51A0BD47BB /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		4A6DC5336CD7AA84BDEC2397 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				02A6CDE52BB27965003A3FAD /* Homepage.swift */,
 				02A6CDE72BB27B0F003A3FAD /* Input.swift */,
 				02A6CDF72BB387CC003A3FAD /* ProductView.swift */,
+				02C20AEF2BB6D3830085852E /* ProductDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				024393A52BAE1A8600263F15 /* UserState.swift in Sources */,
 				02A6CDEA2BB27BC4003A3FAD /* LibraryPicker.swift in Sources */,
 				024393A92BAE1AEB00263F15 /* SessionView.swift in Sources */,
+				02C20AF02BB6D3830085852E /* ProductDetailView.swift in Sources */,
 				0DDCFE163DB4F763B04CCB01 /* AmplifyModels.swift in Sources */,
 				024393A72BAE1AD000263F15 /* AppError.swift in Sources */,
 				D45F7F934093A35533B52F96 /* User+Schema.swift in Sources */,
