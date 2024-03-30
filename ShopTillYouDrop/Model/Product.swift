@@ -23,6 +23,7 @@ struct ProductData: Codable {
 struct Offer: Codable {
     let store_name: String
     let price: String
+    let offer_page_url: String!
 }
 
 

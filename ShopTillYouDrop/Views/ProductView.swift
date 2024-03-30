@@ -97,7 +97,7 @@ struct ProductView: View {
     
     func fetchSortedData() {
         let headers = [
-            "X-RapidAPI-Key": "f2561527b8msh635257332d5d609p1e85c6jsn2d979c6fc13e",
+            "X-RapidAPI-Key": "50f5d4c0cemsh78f3534a860c12ap1fa1acjsna3bafe34f868",
             "X-RapidAPI-Host": "real-time-product-search.p.rapidapi.com"
         ]
         
