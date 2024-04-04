@@ -12,7 +12,7 @@ import SwiftUI
 struct ProductView: View {
     
     var input: String
-    @State private var products: [ProductData] = []
+    @State private var products: [ProductDataState] = []
     @State private var sortOrder: String = "BEST_MATCH"
     
     var body: some View {

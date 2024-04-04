@@ -15,6 +15,7 @@ import AWSS3StoragePlugin
 struct ShopTillYouDropApp: App {
     
     let classifier = ImageClassifier()
+    let amplifyDBController = AmplifyDBController()
     
     init() {
         
@@ -36,7 +37,7 @@ struct ShopTillYouDropApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SessionView().environmentObject(classifier)
+            SessionView().environmentObject(classifier).environmentObject(amplifyDBController)
         }
     }
 }

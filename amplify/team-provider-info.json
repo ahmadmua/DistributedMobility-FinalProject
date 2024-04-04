@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "ShopTillYouDrop": {}
+      },
+      "storage": {
+        "s3shoptillyoudropstorageeb305d12": {}
+      },
+      "api": {
+        "ShopTillYouDrop": {}
       }
     }
   }

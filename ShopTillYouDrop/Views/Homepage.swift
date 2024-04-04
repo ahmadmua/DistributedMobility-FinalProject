@@ -11,7 +11,7 @@ struct Homepage: View {
     
     @State private var isShowingMenu = false
     @State private var menuWidth: CGFloat = 0
-    @State private var selection: Int? = nil
+    @State private var selection: Int = 1
     
     var body: some View {
         
@@ -23,14 +23,7 @@ struct Homepage: View {
 
                 Color.white
                 
-                TabView() {
-                    
-                    Scan()
-                        .tabItem {
-                            Image(systemName: "camera.fill")
-                            Text("Scan")
-                            
-                        }
+                TabView(selection: $selection) {
                     
                     UserProfileView()
                         .tabItem {
@@ -38,9 +31,24 @@ struct Homepage: View {
                             Text("User")
                             
                         }
+                        .tag(2)
                     
-                    
+                    Scan()
+                        .tabItem {
+                            Image(systemName: "camera.fill")
+                            Text("Scan")
+                            
+                        }
+                        .tag(1)
                         
+                    
+                    WishlistView()
+                        .tabItem {
+                            Image(systemName: "heart.fill")
+                            Text("Wishlist")
+                        }
+                        .tag(3)
+                    
                     
                 }
 
@@ -48,8 +56,7 @@ struct Homepage: View {
             }
             
             
-        }
-        
+        }        
                     .navigationBarItems(leading:
                         Button(action: {
                             withAnimation {
@@ -67,9 +74,3 @@ struct Homepage: View {
                     .navigationBarBackButtonHidden(true)
     }
 }
-
-//struct Homepage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Homepage()
-//    }
-//}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0187B57A0260D8844FEB4B01 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
 		024393832BAC920300263F15 /* ShopTillYouDropApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024393822BAC920300263F15 /* ShopTillYouDropApp.swift */; };
 		024393852BAC920300263F15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024393842BAC920300263F15 /* ContentView.swift */; };
 		024393872BAC920400263F15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 024393862BAC920400263F15 /* Assets.xcassets */; };
@@ -36,10 +37,19 @@
 		02A6CDF42BB386E2003A3FAD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDF32BB386E2003A3FAD /* Product.swift */; };
 		02A6CDF82BB387CC003A3FAD /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6CDF72BB387CC003A3FAD /* ProductView.swift */; };
 		02C20AF02BB6D3830085852E /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C20AEF2BB6D3830085852E /* ProductDetailView.swift */; };
+		02C20AF42BB7F8920085852E /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C20AF32BB7F8920085852E /* WishlistView.swift */; };
+		02C20AF62BBE4FE50085852E /* AmplifyDBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C20AF52BBE4FE50085852E /* AmplifyDBController.swift */; };
+		06E21F906CB0D79D7B48C408 /* Offer+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76E50E278F097C6CC8C48B /* Offer+Schema.swift */; };
 		0DDCFE163DB4F763B04CCB01 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E40C4C84A2D51A0BD47BB /* AmplifyModels.swift */; };
 		27AA83A9B20ED8B249EB3AED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DF7E36FA4A6A0E17082E7 /* User.swift */; };
+		2EDA2010CD122C726ACF6362 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DF7E36FA4A6A0E17082E7 /* User.swift */; };
+		39A7B56DE5A511CC8CDAEEA5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DF7E36FA4A6A0E17082E7 /* User.swift */; };
+		4236456533CBAFB7783ECFDA /* ProductData+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B52DADCC0C1BCD9E1FC9C3A /* ProductData+Schema.swift */; };
+		5630AEDD214E1D48E61D7949 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
+		839F5AB399926032F9D51025 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B73A6E239922DC9F8EA12 /* ProductData.swift */; };
 		CD9532568E41E346560876A7 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DC5336CD7AA84BDEC2397 /* amplifyconfiguration.json */; };
 		D45F7F934093A35533B52F96 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
+		E02AC24753B91D223E103AB0 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051AD84D875B3D6C52AA5C89 /* Offer.swift */; };
 		E8544810EECADD6848CE9990 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BF00ADDF096579884C9D65E /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
 
@@ -69,11 +79,17 @@
 		02A6CDF32BB386E2003A3FAD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		02A6CDF72BB387CC003A3FAD /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		02C20AEF2BB6D3830085852E /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		02C20AF32BB7F8920085852E /* WishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistView.swift; sourceTree = "<group>"; };
+		02C20AF52BBE4FE50085852E /* AmplifyDBController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDBController.swift; sourceTree = "<group>"; };
+		051AD84D875B3D6C52AA5C89 /* Offer.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Offer.swift; path = amplify/generated/models/Offer.swift; sourceTree = "<group>"; };
 		0BF00ADDF096579884C9D65E /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		322E40C4C84A2D51A0BD47BB /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		446B73A6E239922DC9F8EA12 /* ProductData.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ProductData.swift; path = amplify/generated/models/ProductData.swift; sourceTree = "<group>"; };
 		4A6DC5336CD7AA84BDEC2397 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		6B6DF7E36FA4A6A0E17082E7 /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
+		9B52DADCC0C1BCD9E1FC9C3A /* ProductData+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "ProductData+Schema.swift"; path = "amplify/generated/models/ProductData+Schema.swift"; sourceTree = "<group>"; };
 		A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
+		FA76E50E278F097C6CC8C48B /* Offer+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Offer+Schema.swift"; path = "amplify/generated/models/Offer+Schema.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +111,11 @@
 		024393762BAC920200263F15 = {
 			isa = PBXGroup;
 			children = (
+				FC444AAD0BA51DF91131197C /* AmplifyConfig */,
 				024393812BAC920300263F15 /* ShopTillYouDrop */,
 				024393802BAC920300263F15 /* Products */,
-				FC444AAD0BA51DF91131197C /* AmplifyConfig */,
 				0243939B2BAE11AE00263F15 /* Frameworks */,
-				A81BD6EDC4AE69B97DF1D3B9 /* AmplifyModels */,
+				677922BFF326B66488B05577 /* AmplifyModels */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +164,7 @@
 				02A6CDE72BB27B0F003A3FAD /* Input.swift */,
 				02A6CDF72BB387CC003A3FAD /* ProductView.swift */,
 				02C20AEF2BB6D3830085852E /* ProductDetailView.swift */,
+				02C20AF32BB7F8920085852E /* WishlistView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,14 +202,19 @@
 			children = (
 				02A6CDE32BB27361003A3FAD /* ImagePickerView.swift */,
 				02A6CDE92BB27BC4003A3FAD /* LibraryPicker.swift */,
+				02C20AF52BBE4FE50085852E /* AmplifyDBController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		A81BD6EDC4AE69B97DF1D3B9 /* AmplifyModels */ = {
+		677922BFF326B66488B05577 /* AmplifyModels */ = {
 			isa = PBXGroup;
 			children = (
 				322E40C4C84A2D51A0BD47BB /* AmplifyModels.swift */,
+				FA76E50E278F097C6CC8C48B /* Offer+Schema.swift */,
+				051AD84D875B3D6C52AA5C89 /* Offer.swift */,
+				9B52DADCC0C1BCD9E1FC9C3A /* ProductData+Schema.swift */,
+				446B73A6E239922DC9F8EA12 /* ProductData.swift */,
 				A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */,
 				6B6DF7E36FA4A6A0E17082E7 /* User.swift */,
 			);
@@ -301,9 +323,11 @@
 				024393852BAC920300263F15 /* ContentView.swift in Sources */,
 				024393832BAC920300263F15 /* ShopTillYouDropApp.swift in Sources */,
 				024393AD2BAE1C0400263F15 /* MainTab.swift in Sources */,
+				02C20AF62BBE4FE50085852E /* AmplifyDBController.swift in Sources */,
 				024393A52BAE1A8600263F15 /* UserState.swift in Sources */,
 				02A6CDEA2BB27BC4003A3FAD /* LibraryPicker.swift in Sources */,
 				024393A92BAE1AEB00263F15 /* SessionView.swift in Sources */,
+				02C20AF42BB7F8920085852E /* WishlistView.swift in Sources */,
 				02C20AF02BB6D3830085852E /* ProductDetailView.swift in Sources */,
 				0DDCFE163DB4F763B04CCB01 /* AmplifyModels.swift in Sources */,
 				024393A72BAE1AD000263F15 /* AppError.swift in Sources */,
@@ -316,6 +340,14 @@
 				02A6CDEE2BB27C79003A3FAD /* ImageClassifier.swift in Sources */,
 				02A6CDF02BB27CE4003A3FAD /* MobileNetV2.mlmodel in Sources */,
 				024393AB2BAE1BBE00263F15 /* UserProfile.swift in Sources */,
+				5630AEDD214E1D48E61D7949 /* User+Schema.swift in Sources */,
+				39A7B56DE5A511CC8CDAEEA5 /* User.swift in Sources */,
+				06E21F906CB0D79D7B48C408 /* Offer+Schema.swift in Sources */,
+				E02AC24753B91D223E103AB0 /* Offer.swift in Sources */,
+				4236456533CBAFB7783ECFDA /* ProductData+Schema.swift in Sources */,
+				839F5AB399926032F9D51025 /* ProductData.swift in Sources */,
+				0187B57A0260D8844FEB4B01 /* User+Schema.swift in Sources */,
+				2EDA2010CD122C726ACF6362 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
