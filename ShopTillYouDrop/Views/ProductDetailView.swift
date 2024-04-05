@@ -68,7 +68,9 @@ struct ProductDetailView: View {
                         Button(action: {
                             isHeartFilled.toggle()
                             Task {
-                                //await amplifyController.createProductData()
+                                await amplifyController.createProductData(product_id: product.product_id, product_title: product.product_title, product_photos: product.product_photos, product_rating: product.product_rating!, product_description: product.product_description, store_name: product.offer.store_name, price: product.offer.price, offer_page_url: product.offer.offer_page_url)
+                                
+                                await amplifyController.readProductData()
                             }
                         }) {
                             Image(systemName: isHeartFilled ? "heart.fill" : "heart").resizable()
