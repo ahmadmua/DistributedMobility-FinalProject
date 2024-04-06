@@ -17,6 +17,7 @@ struct ProductDetailView: View {
     @State private var isAutomaticAnimationEnabled = true
     @State private var isHeartFilled = false
     @StateObject var amplifyController = AmplifyDBController()
+    @State private var offers: [OffersProductData] = []
     
     private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
@@ -68,9 +69,8 @@ struct ProductDetailView: View {
                         Button(action: {
                             isHeartFilled.toggle()
                             Task {
-                                await amplifyController.createProductData(product_id: product.product_id, product_title: product.product_title, product_photos: product.product_photos, product_rating: product.product_rating!, product_description: product.product_description, store_name: product.offer.store_name, price: product.offer.price, offer_page_url: product.offer.offer_page_url)
+                                await amplifyController.createProductData(product_id: product.product_id, product_title: product.product_title, product_rating: product.product_rating ?? 0, product_description: product.product_description ?? "N/A", store_name: product.offer.store_name, price: product.offer.price, offer_page_url: product.offer.offer_page_url)
                                 
-                                await amplifyController.readProductData()
                             }
                         }) {
                             Image(systemName: isHeartFilled ? "heart.fill" : "heart").resizable()
@@ -78,7 +78,7 @@ struct ProductDetailView: View {
                                 .foregroundColor(.red)
                                 .padding(.leading, 5)
                         }
-
+                        
                         
                         
                     }
@@ -123,9 +123,35 @@ struct ProductDetailView: View {
                         .font(.headline)
                         .padding(.bottom, 4)
                     
-                    Text(product.product_description)
+                    Text(product.product_description ?? "N/A")
                         .font(.body)
                         .foregroundColor(.secondary)
+                        .padding(.bottom, 4)
+                    
+                    Text("Compare Price")
+                        .font(.headline)
+                        .padding(.bottom, 4)
+                    
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 20) {
+                            ForEach(offers, id: \.offer_page_url) { offer in
+                                Button(action: {
+                                    if let url = URL(string: offer.offer_page_url) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }) {
+                                    
+                                    Text("\(offer.store_name)\n \(offer.price)")
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                }
+                            }
+                        }
+                        .padding()
+                    }
+                    
                 }
                 .padding(.horizontal)
             }
@@ -139,7 +165,52 @@ struct ProductDetailView: View {
                 selectedImageIndex = newIndex
             }
         }
+        .onAppear(perform: fetchOfferData)
     }
+    
+    func fetchOfferData() {
+        let headers = [
+            "X-RapidAPI-Key": "2f97e8506bmsh25356e3490e7c7bp1344f9jsn7720690c277c",
+            "X-RapidAPI-Host": "real-time-product-search.p.rapidapi.com"
+        ]
+        
+        let urlString = "https://real-time-product-search.p.rapidapi.com/product-offers?product_id=\(product.product_id)&country=ca&language=en"
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+        
+        let request = NSMutableURLRequest(url: url,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let data = data {
+                    do {
+                        let decodedData = try JSONDecoder().decode(OffersResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            self.offers = decodedData.data.offers
+                            //print(self.offers)
+                        }
+                    } catch {
+                        print("Error decoding JSON: \(error)")
+                    }
+                }
+            }
+        }
+        
+        dataTask.resume()
+    }
+    
+    
+    
+    
 }
 
 

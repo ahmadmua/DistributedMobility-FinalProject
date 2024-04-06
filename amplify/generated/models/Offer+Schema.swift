@@ -20,8 +20,8 @@ extension Offer {
     model.syncPluralName = "Offers"
     
     model.fields(
-      .field(offer.store_name, is: .required, ofType: .string),
-      .field(offer.price, is: .required, ofType: .string),
+      .field(offer.store_name, is: .optional, ofType: .string),
+      .field(offer.price, is: .optional, ofType: .string),
       .field(offer.offer_page_url, is: .optional, ofType: .string)
     )
     }

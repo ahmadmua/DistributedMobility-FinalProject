@@ -10,6 +10,7 @@ import SwiftUI
 import AWSCognitoAuthPlugin
 import AWSDataStorePlugin
 import AWSS3StoragePlugin
+import AWSAPIPlugin
 
 @main
 struct ShopTillYouDropApp: App {
@@ -25,6 +26,7 @@ struct ShopTillYouDropApp: App {
         do {
             let models = AmplifyModels()
             try Amplify.add(plugin: AWSS3StoragePlugin())
+            //try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: models))
             try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: models))
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.configure()

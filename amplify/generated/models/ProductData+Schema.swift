@@ -8,7 +8,6 @@ extension ProductData {
     case id
     case product_id
     case product_title
-    case product_photos
     case product_rating
     case product_description
     case offer
@@ -35,9 +34,8 @@ extension ProductData {
     
     model.fields(
       .field(productData.id, is: .required, ofType: .string),
-      .field(productData.product_id, is: .required, ofType: .string),
-      .field(productData.product_title, is: .required, ofType: .string),
-      .field(productData.product_photos, is: .optional, ofType: .embeddedCollection(of: String.self)),
+      .field(productData.product_id, is: .optional, ofType: .string),
+      .field(productData.product_title, is: .optional, ofType: .string),
       .field(productData.product_rating, is: .optional, ofType: .double),
       .field(productData.product_description, is: .optional, ofType: .string),
       .field(productData.offer, is: .optional, ofType: .embedded(type: Offer.self)),
