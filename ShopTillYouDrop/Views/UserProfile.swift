@@ -57,9 +57,9 @@ struct UserProfileView: View {
                 }
                 
             }
-            .sheet(isPresented: $isImagePickerVisible) {
-                ImagePickerView(image: $newAvatarImage)
-            }
+//            .sheet(isPresented: $isImagePickerVisible) {
+//                ImagePickerView(image: $newAvatarImage)
+//            }
             .navigationTitle("My Account")
             // 3
             .toolbar {

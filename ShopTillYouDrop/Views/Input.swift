@@ -253,7 +253,6 @@ struct SheetView: View {
         
         NavigationView{
             VStack{
-                //NavigationLink(destination: Search(productList: [], searchProduct: product), tag: 2, selection: self.$selection){}
                 
                 Spacer()
                 

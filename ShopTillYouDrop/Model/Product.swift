@@ -42,7 +42,6 @@ struct OffersProductData: Codable{
     let store_name: String
     let price: String
     let offer_page_url: String!
-    let product_num_reviews: Int
 }
 
 
