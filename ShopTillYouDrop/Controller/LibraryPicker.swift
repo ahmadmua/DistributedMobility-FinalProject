@@ -12,6 +12,7 @@ import PhotosUI
 struct LibraryPicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
     @Binding var isPresented: Bool
+    @Binding var input: String
 
     func makeUIViewController(context: Context) -> some UIViewController {
         var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
@@ -26,14 +27,22 @@ struct LibraryPicker: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
+        return Coordinator(parent: self, input: $input)
+    }
+    
+    init(selectedImage: Binding<UIImage?>, isPresented: Binding<Bool>, input: Binding<String>) {
+        _selectedImage = selectedImage
+        _isPresented = isPresented
+        _input = input
     }
 
     class Coordinator: PHPickerViewControllerDelegate {
         var parent: LibraryPicker
+        @Binding var input: String
 
-        init(parent: LibraryPicker) {
+        init(parent: LibraryPicker, input: Binding<String>) {  // Modify this line
             self.parent = parent
+            _input = input  // Add this line
         }
 
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -55,6 +64,12 @@ struct LibraryPicker: UIViewControllerRepresentable {
                         if let imageUrl = self.uploadImage(selectedImage) {
                             // Use the uploaded image URL here if needed
                             print("Image uploaded successfully: \(imageUrl)")
+                            self.callRapidAPI(imageUrl: imageUrl) { title in
+                                    DispatchQueue.main.async {
+                                        // Update the input text field with the title
+                                        self.parent.input = title ?? ""
+                                    }
+                                }
                         }
                     }
                 }
@@ -103,7 +118,39 @@ struct LibraryPicker: UIViewControllerRepresentable {
             return imageUrl
         }
 
+        func callRapidAPI(imageUrl: String, completion: @escaping (String?) -> Void) {
+            let headers = [
+                "X-RapidAPI-Key": "2f97e8506bmsh25356e3490e7c7bp1344f9jsn7720690c277c",
+                "X-RapidAPI-Host": "real-time-lens-data.p.rapidapi.com"
+            ]
+
+            let url = URL(string: "https://real-time-lens-data.p.rapidapi.com/search?url=\(imageUrl)&language=en&country=us")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print(error)
+                } else if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        if let data = json?["data"] as? [String: Any], let visualMatches = data["visual_matches"] as? [[String: Any]], let firstMatch = visualMatches.first {
+                            if let title = firstMatch["title"] as? String {
+                                   completion(title)
+                               }
+                        }
+                    } catch {
+                        print("Error parsing JSON: \(error)")
+                    }
+                }
+            }
+
+            dataTask.resume()
+        }
 
 
     }
+
 }

@@ -129,15 +129,6 @@ struct Scan: View {
             HStack {
                 
                 Button(action: {
-                    if profileImage != nil {
-                        
-                        classifier.detect(uiImage: profileImage!)
-                        //
-                        if let imageClass = classifier.imageClass {
-                            print(imageClass)
-                        }
-                        showingSheet.toggle()
-                    }
                     
                     
                 }) {
@@ -156,7 +147,6 @@ struct Scan: View {
                 
                 Button(action: {
                     self.selection = 5
-                    
                     
                 }) {
                     Text("SEARCH")
@@ -195,10 +185,7 @@ struct Scan: View {
                     //show camera selction
                 }else{
                     //open photoLibrary
-                    LibraryPicker(selectedImage: self.$profileImage, isPresented: self.$showPicker)
-
-                    
-
+                    LibraryPicker(selectedImage: self.$profileImage, isPresented: self.$showPicker, input: self.$input)
 
 
                 }
