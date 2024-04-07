@@ -37,7 +37,7 @@ struct ShopTillYouDropApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SessionView()
+            SessionView().environmentObject(StorageService())
         }
     }
 }

@@ -179,7 +179,12 @@ struct ProductDetailView: View {
             let model = ProductDataState(
                 product_id: product.product_id,
                 product_title: product.product_title,
-                userId: userState.userId
+                userId: userState.userId,
+                product_description: product.product_description,
+                product_rating: product.product_rating,
+                offer: OfferDataState(store_name: product.offer.store_name, price: product.offer.price, offer_page_url: product.offer.offer_page_url),
+                product_photos: product.product_photos
+
             )
             
             
@@ -191,6 +196,10 @@ struct ProductDetailView: View {
         }
         
     }
+    
+    
+        
+    
     
     func fetchOfferData() {
         let headers = [

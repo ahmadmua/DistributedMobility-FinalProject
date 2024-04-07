@@ -6,19 +6,8 @@ export type AmplifyDependentResourcesAttributes = {
       "GraphQLAPIKeyOutput": "string"
     }
   },
-  "auth": {
-    "ShopTillYouDrop": {
-      "AppClientID": "string",
-      "AppClientIDWeb": "string",
-      "IdentityPoolId": "string",
-      "IdentityPoolName": "string",
-      "UserPoolArn": "string",
-      "UserPoolId": "string",
-      "UserPoolName": "string"
-    }
-  },
   "storage": {
-    "s3shoptillyoudropstorageeb305d12": {
+    "s3shoptillyoudropstorage0f95486b": {
       "BucketName": "string",
       "Region": "string"
     }

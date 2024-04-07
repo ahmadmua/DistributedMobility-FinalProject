@@ -1,20 +1,22 @@
-type User @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  username: String!
-}
-
-type Offer {
+type OfferDataState {
   store_name: String
   price: String
   offer_page_url: String
 }
 
-type ProductData @model @auth(rules: [{allow: public}]) {
+type ProductDataState @model @auth(rules: [{allow: public}]) {
   id: ID!
   product_id: String
   product_title: String
-  product_rating: Float
+  userId: ID!
   product_description: String
-  offer: Offer
+  product_rating: Float
+  offer: OfferDataState
+  product_photos: [String]
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String!
 }
  

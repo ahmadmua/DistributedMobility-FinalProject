@@ -17,6 +17,9 @@
       },
       "api": {
         "ShopTillYouDrop": {}
+      },
+      "storage": {
+        "s3shoptillyoudropstorage0f95486b": {}
       }
     }
   }
