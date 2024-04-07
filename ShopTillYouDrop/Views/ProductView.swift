@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductView: View {
     
     var input: String
-    @State private var products: [ProductDataState] = []
+    @State private var products: [Product] = []
     @State private var sortOrder: String = "BEST_MATCH"
     
     var body: some View {
@@ -48,11 +48,11 @@ struct ProductView: View {
                                 
                                 HStack {
                                     
-                                    Text("\(product.offer.store_name)")
+                                    Text("\(product.offer.store_name ?? "N/A")")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                     
-                                    Text(product.offer.price)
+                                    Text(product.offer.price ?? "N/A")
                                         .font(.subheadline)
                                         .foregroundColor(.green)
                                     

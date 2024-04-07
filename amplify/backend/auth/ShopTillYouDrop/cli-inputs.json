@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "shoptif2b14651",
+    "resourceNameTruncated": "shoptic586fd1c",
     "userPoolName": "ShopTillYouDrop",
     "autoVerifiedAttributes": [
       "email"
@@ -30,9 +30,9 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "ShopTif2b14651_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "ShopTic586fd1c_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "f2b14651",
+    "sharedId": "c586fd1c",
     "resourceName": "ShopTillYouDrop",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",

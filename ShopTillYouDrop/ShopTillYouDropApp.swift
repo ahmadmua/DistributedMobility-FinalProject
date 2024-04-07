@@ -9,14 +9,12 @@ import Amplify
 import SwiftUI
 import AWSCognitoAuthPlugin
 import AWSDataStorePlugin
-import AWSS3StoragePlugin
 import AWSAPIPlugin
+import AWSS3StoragePlugin
 
 @main
 struct ShopTillYouDropApp: App {
     
-    let classifier = ImageClassifier()
-    let amplifyDBController = AmplifyDBController()
     
     init() {
         
@@ -25,10 +23,10 @@ struct ShopTillYouDropApp: App {
     func configureAmplify() {
         do {
             let models = AmplifyModels()
-            try Amplify.add(plugin: AWSS3StoragePlugin())
-            //try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: models))
-            try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: models))
+           try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: models))
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: models))
+            try Amplify.add(plugin: AWSS3StoragePlugin())
             try Amplify.configure()
             print("Successfully configured Amplify")
             
@@ -39,7 +37,7 @@ struct ShopTillYouDropApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SessionView().environmentObject(classifier).environmentObject(amplifyDBController)
+            SessionView()
         }
     }
 }

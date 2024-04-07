@@ -11,12 +11,15 @@ import Foundation
 
 struct ProductDetailView: View {
     
-    var product: ProductDataState
+    var product: Product
+
+    @EnvironmentObject var userState: UserState
+    
+    @Environment(\.dismiss) var dismiss
     
     @State private var selectedImageIndex: Int = 0
     @State private var isAutomaticAnimationEnabled = true
     @State private var isHeartFilled = false
-    @StateObject var amplifyController = AmplifyDBController()
     @State private var offers: [OffersProductData] = []
     
     private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
@@ -69,7 +72,8 @@ struct ProductDetailView: View {
                         Button(action: {
                             isHeartFilled.toggle()
                             Task {
-                                await amplifyController.createProductData(product_id: product.product_id, product_title: product.product_title, product_rating: product.product_rating ?? 0, product_description: product.product_description ?? "N/A", store_name: product.offer.store_name, price: product.offer.price, offer_page_url: product.offer.offer_page_url)
+                                
+                                await createProductData()
                                 
                             }
                         }) {
@@ -85,7 +89,7 @@ struct ProductDetailView: View {
                     
                     HStack {
                         
-                        Text(product.offer.price)
+                        Text(product.offer.price ?? "N/A")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundColor(.green)
@@ -107,11 +111,11 @@ struct ProductDetailView: View {
                             .foregroundColor(.secondary)
                         
                         Button(action: {
-                            if let url = URL(string: product.offer.offer_page_url) {
+                            if let url = URL(string: product.offer.offer_page_url!) {
                                 UIApplication.shared.open(url)
                             }
                         }) {
-                            Text(product.offer.store_name)
+                            Text(product.offer.store_name ?? "N/A")
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
                         }
@@ -165,7 +169,27 @@ struct ProductDetailView: View {
                 selectedImageIndex = newIndex
             }
         }
-        .onAppear(perform: fetchOfferData)
+        //.onAppear(perform: fetchOfferData)
+    }
+    
+    func createProductData() async {
+        
+        do{
+
+            let model = ProductDataState(
+                product_id: product.product_id,
+                product_title: product.product_title,
+                userId: userState.userId
+            )
+            
+            
+            let savedProduct = try await Amplify.DataStore.save(model)
+            //print("Saved product: \(savedProduct)")
+            
+        }catch{
+            print(error)
+        }
+        
     }
     
     func fetchOfferData() {

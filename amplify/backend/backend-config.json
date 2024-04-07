@@ -52,7 +52,7 @@
     }
   },
   "storage": {
-    "s3shoptillyoudropstorageeb305d12": {
+    "s3shoptillyoudropstorage0f95486b": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"

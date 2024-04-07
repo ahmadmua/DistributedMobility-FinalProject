@@ -1,9 +1,9 @@
 {
   "pins" : [
     {
-      "identity" : "amplify-swift",
+      "identity" : "amplify-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/aws-amplify/amplify-swift",
+      "location" : "https://github.com/aws-amplify/amplify-ios",
       "state" : {
         "revision" : "ccfa6a5009512b3717d2f179ef28c3cbbaaa6532",
         "version" : "2.9.1"
@@ -21,7 +21,7 @@
     {
       "identity" : "aws-appsync-realtime-client-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/aws-amplify/aws-appsync-realtime-client-ios.git",
+      "location" : "https://github.com/aws-amplify/aws-appsync-realtime-client-ios",
       "state" : {
         "revision" : "a08684c5004e2049c29f57a5938beae9695a1ef7",
         "version" : "3.1.2"

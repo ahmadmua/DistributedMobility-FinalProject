@@ -173,8 +173,6 @@ struct Scan: View {
 //                        SheetView()
 //                    }
 
-            
-
 
             Spacer()
 

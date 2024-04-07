@@ -1,10 +1,11 @@
 import SwiftUI
 import Amplify
 
+
 struct WishlistView: View {
     
-    @State private var wishlistItems: [ProductData] = []
-    @StateObject var amplifyController = AmplifyDBController()
+    @State private var wishlistItems: [ProductDataState] = []
+    @EnvironmentObject var userState: UserState
     
     var body: some View {
         
@@ -25,7 +26,7 @@ struct WishlistView: View {
                             Text((product.offer?.store_name!)!)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            
+
                             Text(product.offer!.price!)
                                 .font(.subheadline)
                                 .foregroundColor(.green)
@@ -49,7 +50,7 @@ struct WishlistView: View {
             .navigationBarItems(trailing:
             Button(action: {
                 Task {
-                   await amplifyController.deleteAllProductData()
+                   await deleteAllProductData()
                 }
             }) {
                 Image(systemName: "trash")
@@ -63,21 +64,31 @@ struct WishlistView: View {
     func fetchData() {
         Task {
             do {
-                wishlistItems = try await readProductData()
+                let items = try await Amplify.DataStore.query(ProductDataState.self, where: ProductDataState.keys.userId == userState.userId)
+                wishlistItems = items
             } catch {
                 print("Error fetching data: \(error)")
             }
         }
     }
+
     
-    func readProductData() async throws -> [ProductData] {
+    
+    func deleteAllProductData() async {
         do {
-            let products = try await Amplify.DataStore.query(ProductData.self)
-            return products
+            let products = try await Amplify.DataStore.query(ProductDataState.self, where: ProductDataState.keys.userId == userState.userId)
+            for product in products {
+                try await Amplify.DataStore.delete(product)
+            }
+            print("Successfully deleted all records")
         } catch {
-            throw error
+            print("Error deleting all records: \(error)")
         }
     }
+
+
+    
+    
 }
 
 struct WishlistView_Previews: PreviewProvider {
@@ -85,3 +96,4 @@ struct WishlistView_Previews: PreviewProvider {
         WishlistView()
     }
 }
+

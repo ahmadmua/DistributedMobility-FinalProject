@@ -10,22 +10,22 @@ import Amplify
 
 
 struct ProductResponse: Codable {
-    let data: [ProductDataState]
+    let data: [Product]
 }
 
-struct ProductDataState: Codable {
+struct Product: Codable {
     let product_id: String
     let product_title: String
     let product_photos: [String]
     let product_rating: Double?
     let product_description: String?
-    let offer: OfferState
+    let offer: Offer
 }
 
-struct OfferState: Codable {
-    let store_name: String
-    let price: String
-    let offer_page_url: String!
+struct Offer: Codable {
+    let store_name: String?
+    let price: String?
+    let offer_page_url: String?
 }
 
 //------------NEW API MODEL FOR OFFERS---------------------//
