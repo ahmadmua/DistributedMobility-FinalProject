@@ -21,6 +21,7 @@ struct ProductDetailView: View {
     @State private var isAutomaticAnimationEnabled = true
     @State private var isHeartFilled = false
     @State private var offers: [OffersProductData] = []
+    @State private var reviews: [ReviewsProductData] = []
     
     private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
@@ -170,6 +171,7 @@ struct ProductDetailView: View {
             }
         }
         //.onAppear(perform: fetchOfferData)
+        .onAppear(perform: fetchReviewsData)
     }
     
     func createProductData() async {
@@ -241,6 +243,47 @@ struct ProductDetailView: View {
         dataTask.resume()
     }
     
+    
+    func fetchReviewsData() {
+        let headers = [
+            "X-RapidAPI-Key": "2f97e8506bmsh25356e3490e7c7bp1344f9jsn7720690c277c",
+            "X-RapidAPI-Host": "real-time-product-search.p.rapidapi.com"
+        ]
+        
+        let urlString = "https://real-time-product-search.p.rapidapi.com/product-reviews?product_id=\(product.product_id)&country=us&language=en"
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+        
+        let request = NSMutableURLRequest(url: url,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                if let data = data {
+                    
+                    do {
+                        let decodedData = try JSONDecoder().decode(ReviewResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            self.reviews = decodedData.data.reviews
+                            print(self.reviews)
+                        }
+                    } catch {
+                        print("Error decoding JSON: \(error)")
+                    }
+                }
+            }
+        }
+        
+        dataTask.resume()
+    }
     
     
     
