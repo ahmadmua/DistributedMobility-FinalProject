@@ -12,7 +12,8 @@ import Foundation
 struct ProductDetailView: View {
     
     var product: Product
-
+    var rev: ReviewsProductData?
+    
     @EnvironmentObject var userState: UserState
     
     @Environment(\.dismiss) var dismiss
@@ -62,7 +63,7 @@ struct ProductDetailView: View {
                     
                     HStack {
                         
-                        Text(product.product_title)
+                        Text(product.product_title )
                             .font(.title)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.leading)
@@ -90,7 +91,7 @@ struct ProductDetailView: View {
                     
                     HStack {
                         
-                        Text(product.offer.price ?? "N/A")
+                        Text(product.offer.price )
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundColor(.green)
@@ -100,7 +101,7 @@ struct ProductDetailView: View {
                             .foregroundColor(.yellow)
                             .frame(width: 9, height: 9)
                         
-                        Text("\(String(format: "%.2f", product.product_rating ?? 0.0))")
+                        Text("\(String(format: "%.2f", product.product_rating ?? "N/A"))")
                             .font(.subheadline)
                             .foregroundColor(.black)
                         
@@ -112,11 +113,11 @@ struct ProductDetailView: View {
                             .foregroundColor(.secondary)
                         
                         Button(action: {
-                            if let url = URL(string: product.offer.offer_page_url!) {
+                            if let url = URL(string: product.offer.offer_page_url ) {
                                 UIApplication.shared.open(url)
                             }
                         }) {
-                            Text(product.offer.store_name ?? "N/A")
+                            Text(product.offer.store_name )
                                 .font(.subheadline)
                                 .foregroundColor(.blue)
                         }
@@ -128,7 +129,7 @@ struct ProductDetailView: View {
                         .font(.headline)
                         .padding(.bottom, 4)
                     
-                    Text(product.product_description ?? "N/A")
+                    Text(product.product_description ?? "N/A" )
                         .font(.body)
                         .foregroundColor(.secondary)
                         .padding(.bottom, 4)
@@ -141,12 +142,12 @@ struct ProductDetailView: View {
                         HStack(spacing: 20) {
                             ForEach(offers, id: \.offer_page_url) { offer in
                                 Button(action: {
-                                    if let url = URL(string: offer.offer_page_url) {
+                                    if let url = URL(string: offer.offer_page_url ) {
                                         UIApplication.shared.open(url)
                                     }
                                 }) {
                                     
-                                    Text("\(offer.store_name)\n \(offer.price)")
+                                    Text("\(offer.store_name )\n \(offer.price )")
                                         .padding()
                                         .background(Color.blue)
                                         .foregroundColor(.white)
@@ -156,6 +157,55 @@ struct ProductDetailView: View {
                         }
                         .padding()
                     }
+                    
+                    
+                    Text("Customer Reviews")
+                        .font(.headline)
+                        .padding(.bottom, 4)
+                    
+                    
+                    Section {
+                        ForEach(reviews, id: \.review_id) { review in
+                            HStack {
+                                Image(systemName: "person.fill")
+                                    .resizable()
+                                    .frame(width: 27, height: 27)
+                                    .foregroundColor(.red)
+                                    .padding(.leading, 5)
+                                    .padding(.top, 5)
+                                
+                                Text(review.review_author)
+                                    .padding(.leading, 5)
+                            }
+                            
+                            HStack {
+                                if let rating = review.rating {
+                                    ForEach(0..<Int(rating), id: \.self) { _ in
+                                        Image(systemName: "star.fill")
+                                            .foregroundColor(.yellow)
+                                    }
+                                    if rating.truncatingRemainder(dividingBy: 1) != 0 {
+                                        Image(systemName: "star.lefthalf.fill")
+                                            .foregroundColor(.yellow)
+                                    }
+                                }
+                            }
+                            
+                            Text(review.review_title ?? "N/A")
+                                .padding(.leading, 5)
+                                .bold()
+                            
+                            Text("Reviewed on: \(String((review.review_datetime_utc.prefix(10)) ?? "N/A"))")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            
+                            Text(review.review_text ?? "N/A")
+                        }
+                    }
+
+                    
+                    
+                    
                     
                 }
                 .padding(.horizontal)
@@ -177,7 +227,7 @@ struct ProductDetailView: View {
     func createProductData() async {
         
         do{
-
+            
             let model = ProductDataState(
                 product_id: product.product_id,
                 product_title: product.product_title,
@@ -186,11 +236,11 @@ struct ProductDetailView: View {
                 product_rating: product.product_rating,
                 offer: OfferDataState(store_name: product.offer.store_name, price: product.offer.price, offer_page_url: product.offer.offer_page_url),
                 product_photos: product.product_photos
-
+                
             )
             
             
-            let savedProduct = try await Amplify.DataStore.save(model)
+            _ = try await Amplify.DataStore.save(model)
             //print("Saved product: \(savedProduct)")
             
         }catch{
@@ -200,12 +250,10 @@ struct ProductDetailView: View {
     }
     
     
-        
-    
-    
     func fetchOfferData() {
+        
         let headers = [
-            "X-RapidAPI-Key": "2f97e8506bmsh25356e3490e7c7bp1344f9jsn7720690c277c",
+            "X-RapidAPI-Key": "c5be484f8dmshec6e326c0407129p1eff61jsn44f0d37edc83",
             "X-RapidAPI-Host": "real-time-product-search.p.rapidapi.com"
         ]
         
@@ -246,7 +294,7 @@ struct ProductDetailView: View {
     
     func fetchReviewsData() {
         let headers = [
-            "X-RapidAPI-Key": "2f97e8506bmsh25356e3490e7c7bp1344f9jsn7720690c277c",
+            "X-RapidAPI-Key": "c5be484f8dmshec6e326c0407129p1eff61jsn44f0d37edc83",
             "X-RapidAPI-Host": "real-time-product-search.p.rapidapi.com"
         ]
         
@@ -293,13 +341,17 @@ struct ProductDetailView: View {
 
 
 
-//
+
 //struct ProductDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        let product = ProductData(product_id: "1",
-//                                  product_title: "Nike Retro A1",
+//        let product = Product(product_id: "1",
+//                              product_title: "Nike Retro A1", product_photos: ["h"],
 //                                  product_rating: 4.5, product_description: "The Nike Dunk Low Retro White Black (PS) sneakers combine iconic style with modern comfort. With its timeless white and black colorway, these sneakers are versatile and perfect for any occasion. The retro design pays homage to the original Nike Dunk, while the low-top silhouette offers a contemporary vibe. Crafted with premium materials, these sneakers provide durability and support. Whether you're hitting the skate park or strolling the streets, the Nike Dunk Low Retro White Black (PS) sneakers will elevate your footwear game",
 //                                  offer: Offer(store_name: "Amazon", price: "$19.99", offer_page_url: "TEST URL"))
-//        return ProductDetailView(product: product)
+//
+//        let reviews = ReviewsProductData(review_title: "Test", review_author: "John B", review_source: "check", review_text: "COOL", rating: 4.5, photos: ["hello"], review_datetime_utc: "2023-04-01T00:00:00.000Z")
+//
+//        return ProductDetailView(product: product, rev: reviews)
+//
 //    }
 //}

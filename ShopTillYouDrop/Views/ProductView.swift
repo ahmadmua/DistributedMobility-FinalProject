@@ -11,6 +11,7 @@ struct ProductView: View {
     
     var input: String
     @State private var products: [Product] = []
+    
     @State private var sortOrder: String = "BEST_MATCH"
     
     var body: some View {
@@ -48,11 +49,11 @@ struct ProductView: View {
                                 
                                 HStack {
                                     
-                                    Text("\(product.offer.store_name ?? "N/A")")
+                                    Text("\(product.offer.store_name )")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                     
-                                    Text(product.offer.price ?? "N/A")
+                                    Text(product.offer.price )
                                         .font(.subheadline)
                                         .foregroundColor(.green)
                                     
@@ -95,7 +96,7 @@ struct ProductView: View {
     
     func fetchSortedData() {
         let headers = [
-            "X-RapidAPI-Key": "2f97e8506bmsh25356e3490e7c7bp1344f9jsn7720690c277c",
+            "X-RapidAPI-Key": "c5be484f8dmshec6e326c0407129p1eff61jsn44f0d37edc83",
             "X-RapidAPI-Host": "real-time-product-search.p.rapidapi.com"
         ]
         
@@ -140,9 +141,8 @@ struct ProductView: View {
     
 }
 
-struct Previews_ProductView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductView(input: "iphone")
-    }
-}
-
+//struct Previews_ProductView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProductView(input: "iphone")
+//    }
+//}
