@@ -19,6 +19,7 @@ struct Product: Codable {
     let product_photos: [String]
     let product_rating: Double?
     let product_description: String?
+    let typical_price_range: [String]?
     let offer: Offer
 }
 //Search
@@ -40,9 +41,9 @@ struct OffersDataState: Codable {
 }
 //Offers
 struct OffersProductData: Codable{
-    let store_name: String
-    let price: String
-    let offer_page_url: String!
+    let store_name: String?
+    let price: String?
+    let offer_page_url: String?
 }
 
 //------------NEW API MODEL FOR REVIEWS---------------------//
@@ -59,10 +60,9 @@ struct ReviewsProductData: Codable {
     let review_id: String
     let review_title: String?
     let review_author: String
-   let review_source: String
+    let review_source: String
     let review_text: String
     let rating: Float
-//    let photos: [String]?
     let review_datetime_utc: String
 }
 

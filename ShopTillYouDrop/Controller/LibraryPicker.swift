@@ -120,7 +120,7 @@ struct LibraryPicker: UIViewControllerRepresentable {
 
         func callRapidAPI(imageUrl: String, completion: @escaping (String?) -> Void) {
             let headers = [
-                "X-RapidAPI-Key": "c5be484f8dmshec6e326c0407129p1eff61jsn44f0d37edc83",
+                "X-RapidAPI-Key": "1bbc72fd05msh2447da52fb787fep134cd6jsnd51bc21fae66",
                 "X-RapidAPI-Host": "real-time-lens-data.p.rapidapi.com"
             ]
 

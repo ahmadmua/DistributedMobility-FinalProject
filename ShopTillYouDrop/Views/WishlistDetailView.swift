@@ -122,25 +122,25 @@ struct WishlistDetailView: View {
                         .font(.headline)
                         .padding(.bottom, 4)
                     
-                    //                    ScrollView(.horizontal) {
-                    //                        HStack(spacing: 20) {
-                    //                            ForEach(offers, id: \.offer_page_url) { offer in
-                    //                                Button(action: {
-                    //                                    if let url = URL(string: offer.offer_page_url) {
-                    //                                        UIApplication.shared.open(url)
-                    //                                    }
-                    //                                }) {
-                    //
-                    //                                    Text("\(offer.store_name)\n \(offer.price)")
-                    //                                        .padding()
-                    //                                        .background(Color.blue)
-                    //                                        .foregroundColor(.white)
-                    //                                        .cornerRadius(10)
-                    //                                }
-                    //                            }
-                    //                        }
-                    //                        .padding()
-                    //                    }
+//                                        ScrollView(.horizontal) {
+//                                            HStack(spacing: 20) {
+//                                                ForEach(offers, id: \.offer_page_url) { offer in
+//                                                    Button(action: {
+//                                                        if let url = URL(string: offer.offer_page_url) {
+//                                                            UIApplication.shared.open(url)
+//                                                        }
+//                                                    }) {
+//
+//                                                        Text("\(offer.store_name)\n \(offer.price)")
+//                                                            .padding()
+//                                                            .background(Color.blue)
+//                                                            .foregroundColor(.white)
+//                                                            .cornerRadius(10)
+//                                                    }
+//                                                }
+//                                            }
+//                                            .padding()
+//                                        }
                     
                 }
                 .padding(.horizontal)

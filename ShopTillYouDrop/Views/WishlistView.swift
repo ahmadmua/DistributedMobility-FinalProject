@@ -5,6 +5,7 @@ struct WishlistView: View {
 
     @State  var wishlistItems: [ProductDataState] = []
     @EnvironmentObject var userState: UserState
+    static let shared = WishlistView()
 
     var body: some View {
 
