@@ -24,9 +24,9 @@ struct Product: Codable {
 }
 //Search
 struct Offer: Codable {
-    let store_name: String
-    let price: String
-    let offer_page_url: String!
+    let store_name: String?
+    let price: String?
+    let offer_page_url: String?
 }
 
 //------------NEW API MODEL FOR OFFERS---------------------//

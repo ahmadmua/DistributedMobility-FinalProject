@@ -49,11 +49,11 @@ struct ProductView: View {
                                 
                                 HStack {
                                     
-                                    Text("\(product.offer.store_name )")
+                                    Text("\(product.offer.store_name ?? "NA")")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                     
-                                    Text(product.offer.price )
+                                    Text(product.offer.price ?? "N/A")
                                         .font(.subheadline)
                                         .foregroundColor(.green)
                                     

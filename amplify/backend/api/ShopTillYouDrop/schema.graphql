@@ -1,3 +1,9 @@
+type OfferLinkStates {
+  store_name: String
+  price: String
+  offer_page_url: String
+}
+
 type OfferDataState {
   store_name: String
   price: String
@@ -13,6 +19,8 @@ type ProductDataState @model @auth(rules: [{allow: public}]) {
   product_rating: Float
   offer: OfferDataState
   product_photos: [String]
+  typical_price_range: [String]
+  offerLink: [OfferLinkStates]
 }
 
 type User @model @auth(rules: [{allow: public}]) {

@@ -12,8 +12,9 @@ struct WishlistView: View {
         NavigationView {
 
             List {
+                
                 ForEach(wishlistItems, id: \.product_id) { product in
-
+          
                     NavigationLink(destination: WishlistDetailView(wishlistItems: product)) {
                         
                         HStack {
@@ -57,7 +58,8 @@ struct WishlistView: View {
                         }
                     }
                 }
-                .onDelete(perform: deleteProduct)
+                    .onDelete(perform: deleteProduct)
+                
             }
             .navigationTitle("Wishlist")
             .navigationBarItems(trailing:
