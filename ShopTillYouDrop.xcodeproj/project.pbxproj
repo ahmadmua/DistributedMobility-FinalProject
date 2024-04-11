@@ -58,13 +58,17 @@
 		5630AEDD214E1D48E61D7949 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
 		569278B592E21E854D79E747 /* ProductDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F343905BF855B2D40E03DB3 /* ProductDataState.swift */; };
 		5B2ABEA4DA546FFFDCE5B00A /* ProductDataState+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DED1FFFE93B6A68BE36E48 /* ProductDataState+Schema.swift */; };
+		65DADDA7AEF5C37E3135667E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DF7E36FA4A6A0E17082E7 /* User.swift */; };
 		689A722B1A87D9E5ABA286B3 /* ProductDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F343905BF855B2D40E03DB3 /* ProductDataState.swift */; };
 		73C8255141D7AD497CB88171 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
 		75A542BD8179F48A7DFE8C5B /* ProductDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F343905BF855B2D40E03DB3 /* ProductDataState.swift */; };
 		771B3D0716889A55370909B1 /* ProductDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F343905BF855B2D40E03DB3 /* ProductDataState.swift */; };
+		88896611A7508D578695913B /* ReviewLinkStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF53A08D04C4D3537CAA3C4 /* ReviewLinkStates.swift */; };
+		934618A146B69539922025D0 /* ReviewLinkStates+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6B1EDB43797BFD47F3291C /* ReviewLinkStates+Schema.swift */; };
 		AC42B2B797833569010DAB55 /* ProductDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F343905BF855B2D40E03DB3 /* ProductDataState.swift */; };
 		B1FCF18102555E6C2DF12792 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
 		B6582B7E33633B3BF5AC0F39 /* ProductDataState+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DED1FFFE93B6A68BE36E48 /* ProductDataState+Schema.swift */; };
+		C2F1D37D27A9097473A98EAB /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
 		C6340B87F6FCC015C1F1189B /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */; };
 		C9EFDFDB060B4E822337E7E1 /* ProductDataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F343905BF855B2D40E03DB3 /* ProductDataState.swift */; };
 		CD9532568E41E346560876A7 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DC5336CD7AA84BDEC2397 /* amplifyconfiguration.json */; };
@@ -111,7 +115,9 @@
 		5FCCE77BE97B28701255CC18 /* OfferLinkStates.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = OfferLinkStates.swift; path = amplify/generated/models/OfferLinkStates.swift; sourceTree = "<group>"; };
 		6B6DF7E36FA4A6A0E17082E7 /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
 		764F3EB69F3184271649AB26 /* OfferDataState+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "OfferDataState+Schema.swift"; path = "amplify/generated/models/OfferDataState+Schema.swift"; sourceTree = "<group>"; };
+		8FF53A08D04C4D3537CAA3C4 /* ReviewLinkStates.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ReviewLinkStates.swift; path = amplify/generated/models/ReviewLinkStates.swift; sourceTree = "<group>"; };
 		A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
+		BB6B1EDB43797BFD47F3291C /* ReviewLinkStates+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "ReviewLinkStates+Schema.swift"; path = "amplify/generated/models/ReviewLinkStates+Schema.swift"; sourceTree = "<group>"; };
 		E18D8EB285B7115D679060DA /* OfferDataState.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = OfferDataState.swift; path = amplify/generated/models/OfferDataState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +250,8 @@
 				E18D8EB285B7115D679060DA /* OfferDataState.swift */,
 				483945E0BE404C854485B520 /* OfferLinkStates+Schema.swift */,
 				5FCCE77BE97B28701255CC18 /* OfferLinkStates.swift */,
+				BB6B1EDB43797BFD47F3291C /* ReviewLinkStates+Schema.swift */,
+				8FF53A08D04C4D3537CAA3C4 /* ReviewLinkStates.swift */,
 			);
 			name = AmplifyModels;
 			sourceTree = "<group>";
@@ -395,6 +403,10 @@
 				771B3D0716889A55370909B1 /* ProductDataState.swift in Sources */,
 				B1FCF18102555E6C2DF12792 /* User+Schema.swift in Sources */,
 				4E6DE580A97F842278617E88 /* User.swift in Sources */,
+				934618A146B69539922025D0 /* ReviewLinkStates+Schema.swift in Sources */,
+				88896611A7508D578695913B /* ReviewLinkStates.swift in Sources */,
+				C2F1D37D27A9097473A98EAB /* User+Schema.swift in Sources */,
+				65DADDA7AEF5C37E3135667E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

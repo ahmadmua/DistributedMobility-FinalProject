@@ -1,3 +1,13 @@
+type ReviewLinkStates {
+  review_id: String
+  review_title: String
+  review_author: String
+  review_source: String
+  review_text: String
+  rating: Float
+  review_datetime_utc: String
+}
+
 type OfferLinkStates {
   store_name: String
   price: String
@@ -21,6 +31,7 @@ type ProductDataState @model @auth(rules: [{allow: public}]) {
   product_photos: [String]
   typical_price_range: [String]
   offerLink: [OfferLinkStates]
+  reviewLink: [ReviewLinkStates]
 }
 
 type User @model @auth(rules: [{allow: public}]) {
