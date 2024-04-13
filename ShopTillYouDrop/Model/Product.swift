@@ -59,9 +59,9 @@ struct ReviewDataState: Codable {
 struct ReviewsProductData: Codable {
     let review_id: String
     let review_title: String?
-    let review_author: String
-    let review_source: String
-    let review_text: String
+    let review_author: String?
+    let review_source: String?
+    let review_text: String?
     let rating: Float
     let review_datetime_utc: String
 }

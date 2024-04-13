@@ -34,7 +34,7 @@ struct ProductView: View {
                         
                         HStack {
                             AsyncImage(url: URL(string: product.product_photos.first ?? "")) { image in
-                                image.resizable().scaledToFit().frame(width: 50, height: 50)
+                                image.resizable().scaledToFit().frame(width: 55, height: 55)
                             } placeholder: {
                                 ProgressView()
                             }

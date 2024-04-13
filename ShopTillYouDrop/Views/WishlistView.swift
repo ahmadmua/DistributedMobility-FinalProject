@@ -17,13 +17,13 @@ struct WishlistView: View {
                 
                 ForEach(wishlistItems, id: \.product_id) { product in
                     
-                    NavigationLink(destination: WishlistDetailView(wishlistItems: product)) {
+                    NavigationLink(destination: WishlistDetailView(wishlistItem: product)) {
                         
                         HStack {
                             
                             if let image = images[product.product_id ?? ""] {
                                 Image(uiImage: image)
-                                    .resizable().scaledToFit().frame(width: 50, height: 50)
+                                    .resizable().scaledToFit().frame(width: 55, height: 55)
                             } else {
                                 Text("Loading Image...")
                             }
@@ -124,6 +124,9 @@ struct WishlistView: View {
             do {
                 for index in offsets {
                     let product = wishlistItems[index]
+                    if let productId = product.product_id {
+                        await deleteImageFromS3(for: productId)
+                    }
                     try await Amplify.DataStore.delete(product)
                 }
                 wishlistItems.remove(atOffsets: offsets)
@@ -131,6 +134,18 @@ struct WishlistView: View {
             } catch {
                 print("Error deleting product: \(error)")
             }
+        }
+    }
+    
+    func deleteImageFromS3(for productId: String) async {
+        let key = "\(productId).jpg"
+        print("Deleting image from S3 with key:", key)
+        do {
+            _ = try await Amplify.Storage.remove(key: key)
+            images.removeValue(forKey: productId)
+            print("Successfully deleted image")
+        } catch {
+            print("Error deleting image from S3:", error)
         }
     }
     
@@ -150,6 +165,9 @@ struct WishlistView: View {
         do {
             let products = try await Amplify.DataStore.query(ProductDataState.self, where: ProductDataState.keys.userId == userState.userId)
             for product in products {
+                if let productId = product.product_id {
+                    await deleteImageFromS3(for: productId)
+                }
                 try await Amplify.DataStore.delete(product)
             }
             wishlistItems.removeAll()
@@ -158,6 +176,7 @@ struct WishlistView: View {
             print("Error deleting all records: \(error)")
         }
     }
+
     
 }
 struct WishlistView_Previews: PreviewProvider {

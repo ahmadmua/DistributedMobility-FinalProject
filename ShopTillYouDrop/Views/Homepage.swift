@@ -20,27 +20,28 @@ struct Homepage: View {
             
             
             ZStack(alignment: .leading) {
-
+                
                 Color.white
                 
                 TabView(selection: $selection) {
                     
-                    UserProfileView()
-                        .tabItem {
-                            Image(systemName: "person.fill")
-                            Text("User")
-                            
-                        }
-                        .tag(2)
+                                        UserProfileView()
+                                            .tabItem {
+                                                Image(systemName: "person.fill")
+                                                Text("User")
+                    
+                                            }
+                                            .tag(2)
                     
                     Scan()
                         .tabItem {
                             Image(systemName: "camera.fill")
-                            Text("Scan")
+                            Text("Search")
+                            
                             
                         }
                         .tag(1)
-                        
+                    
                     
                     WishlistView()
                         .tabItem {
@@ -51,26 +52,28 @@ struct Homepage: View {
                     
                     
                 }
-
-
+                
+                
             }
             
             
-        }        
-                    .navigationBarItems(leading:
-                        Button(action: {
-                            withAnimation {
-                                isShowingMenu.toggle()
-                                   
-                                
-                            }
-                        }) {
-                            Image(systemName: "person.crop.circle.fill")
-                        }
-                    )
-                    .onAppear {
-                        menuWidth = UIScreen.main.bounds.width / 1.75
-                    }
-                    .navigationBarBackButtonHidden(true)
+        }
+        
+        .navigationBarItems(leading:
+                                Button(action: {
+            withAnimation {
+                isShowingMenu.toggle()
+                
+                
+            }
+        }) {
+            Image(systemName: "person.crop.circle.fill")
+        }
+        )
+        .onAppear {
+            menuWidth = UIScreen.main.bounds.width / 1.75
+        }
+        .navigationBarBackButtonHidden(true)
+        
     }
 }
