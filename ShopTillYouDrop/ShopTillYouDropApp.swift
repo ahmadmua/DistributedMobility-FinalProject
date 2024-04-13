@@ -30,10 +30,13 @@ struct ShopTillYouDropApp: App {
             try Amplify.configure()
             print("Successfully configured Amplify")
             
+            
         } catch {
             print("Failed to initialize Amplify", error)
         }
     }
+    
+
     
     var body: some Scene {
         WindowGroup {

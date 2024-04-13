@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AWSS3StoragePlugin
+import Amplify
 
 struct ProductView: View {
     
@@ -88,11 +90,13 @@ struct ProductView: View {
         .onChange(of: sortOrder, perform: { _ in
             fetchSortedData()
         })
+        
     }
     
     func fetchData() {
         fetchSortedData()
     }
+
     
     func fetchSortedData() {
         let headers = [

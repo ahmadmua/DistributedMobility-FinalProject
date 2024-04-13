@@ -24,6 +24,7 @@
 		024393B02BAE1DA000263F15 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024393AF2BAE1DA000263F15 /* AvatarView.swift */; };
 		025A06FE2BC77AB8005AF405 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A06FD2BC77AB8005AF405 /* ProductDetailView.swift */; };
 		025A07002BC7996A005AF405 /* WishlistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A06FF2BC7996A005AF405 /* WishlistDetailView.swift */; };
+		025A07022BC7B862005AF405 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 025A07012BC7B862005AF405 /* AWSPluginsCore */; };
 		0277B4182BC28DA000047B1B /* AppSyncRealTimeClient in Frameworks */ = {isa = PBXBuildFile; productRef = 0277B4172BC28DA000047B1B /* AppSyncRealTimeClient */; };
 		0277B41B2BC28E4E00047B1B /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 0277B41A2BC28E4E00047B1B /* AWSAPIPlugin */; };
 		0277B41D2BC28E4E00047B1B /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 0277B41C2BC28E4E00047B1B /* AWSCognitoAuthPlugin */; };
@@ -115,9 +116,9 @@
 		5FCCE77BE97B28701255CC18 /* OfferLinkStates.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = OfferLinkStates.swift; path = amplify/generated/models/OfferLinkStates.swift; sourceTree = "<group>"; };
 		6B6DF7E36FA4A6A0E17082E7 /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
 		764F3EB69F3184271649AB26 /* OfferDataState+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "OfferDataState+Schema.swift"; path = "amplify/generated/models/OfferDataState+Schema.swift"; sourceTree = "<group>"; };
-		8FF53A08D04C4D3537CAA3C4 /* ReviewLinkStates.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ReviewLinkStates.swift; path = amplify/generated/models/ReviewLinkStates.swift; sourceTree = "<group>"; };
+		8FF53A08D04C4D3537CAA3C4 /* ReviewLinkStates.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ReviewLinkStates.swift; path = amplify/generated/models/ReviewLinkStates.swift; sourceTree = "<group>"; };
 		A0296ADF5FB6F1F0D4C18366 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
-		BB6B1EDB43797BFD47F3291C /* ReviewLinkStates+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "ReviewLinkStates+Schema.swift"; path = "amplify/generated/models/ReviewLinkStates+Schema.swift"; sourceTree = "<group>"; };
+		BB6B1EDB43797BFD47F3291C /* ReviewLinkStates+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "ReviewLinkStates+Schema.swift"; path = "amplify/generated/models/ReviewLinkStates+Schema.swift"; sourceTree = "<group>"; };
 		E18D8EB285B7115D679060DA /* OfferDataState.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = OfferDataState.swift; path = amplify/generated/models/OfferDataState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0277B41B2BC28E4E00047B1B /* AWSAPIPlugin in Frameworks */,
+				025A07022BC7B862005AF405 /* AWSPluginsCore in Frameworks */,
 				0277B4212BC28E4E00047B1B /* Amplify in Frameworks */,
 				0277B4182BC28DA000047B1B /* AppSyncRealTimeClient in Frameworks */,
 				0277B4232BC2912C00047B1B /* AWSDataStorePlugin in Frameworks */,
@@ -288,6 +290,7 @@
 				0277B4202BC28E4E00047B1B /* Amplify */,
 				0277B4222BC2912C00047B1B /* AWSDataStorePlugin */,
 				0277B4272BC2A91600047B1B /* AWSS3StoragePlugin */,
+				025A07012BC7B862005AF405 /* AWSPluginsCore */,
 			);
 			productName = ShopTillYouDrop;
 			productReference = 0243937F2BAC920300263F15 /* ShopTillYouDrop.app */;
@@ -630,6 +633,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		025A07012BC7B862005AF405 /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0277B4192BC28E4E00047B1B /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPluginsCore;
+		};
 		0277B4172BC28DA000047B1B /* AppSyncRealTimeClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0277B4162BC28DA000047B1B /* XCRemoteSwiftPackageReference "aws-appsync-realtime-client-ios" */;
