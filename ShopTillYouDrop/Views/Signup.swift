@@ -72,6 +72,8 @@ struct SignUpView: View {
                     .background(Color.blue)
                     .cornerRadius(10)
             }
+            .disabled(username.isEmpty || password.isEmpty || username.isEmpty)
+            .opacity(username.isEmpty || username.isEmpty || password.isEmpty ? 0.5 : 1.0)
             .alert(self.msg, isPresented: $showingAlert) {
                         Button("OK", role: .cancel) { }
                     }
@@ -101,12 +103,10 @@ struct SignUpView: View {
         // 3
 
     func signUp() async {
-        // 1
         let options = AuthSignUpRequest.Options(
             userAttributes: [.init(.email, value: email)]
         )
         do {
-            // 2
             let result = try await Amplify.Auth.signUp(
                 username: username,
                 password: password,
@@ -114,7 +114,6 @@ struct SignUpView: View {
             )
             
             switch result.nextStep {
-            // 3
             case .confirmUser:
                 DispatchQueue.main.async {
                     self.shouldShowConfirmSignUp = true
@@ -123,8 +122,16 @@ struct SignUpView: View {
                 print(result)
             }
         } catch {
+            let errorMessage = "\(error)"
+            if let firstLine = errorMessage.components(separatedBy: "\n").first {
+                msg = firstLine
+            } else {
+                msg = errorMessage
+            }
+            showingAlert = true
             print(error)
         }
     }
+
 }
 

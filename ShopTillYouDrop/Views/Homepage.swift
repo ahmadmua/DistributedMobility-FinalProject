@@ -25,13 +25,13 @@ struct Homepage: View {
                 
                 TabView(selection: $selection) {
                     
-                                        UserProfileView()
-                                            .tabItem {
-                                                Image(systemName: "person.fill")
-                                                Text("User")
-                    
-                                            }
-                                            .tag(2)
+//                                        UserProfileView()
+//                                            .tabItem {
+//                                                Image(systemName: "person.fill")
+//                                                Text("User")
+//                    
+//                                            }
+//                                            .tag(2)
                     
                     Scan()
                         .tabItem {

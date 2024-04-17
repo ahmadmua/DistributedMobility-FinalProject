@@ -60,7 +60,11 @@ struct LoginView: View {
                         .frame(height: 56, alignment: .leading)
                         .background(Color.blue)
                         .cornerRadius(10)
-                }
+                }.disabled(username.isEmpty || password.isEmpty)
+                    .opacity(username.isEmpty || password.isEmpty ? 0.5 : 1.0)
+                    .alert("\(msg)", isPresented: $showingAlert) {
+                                Button("OK", role: .cancel) { }
+                            }
                 
                 Spacer()
                 
@@ -84,27 +88,37 @@ struct LoginView: View {
                 SignUpView(showLogin: { shouldShowSignUp = false })
                     .navigationBarBackButtonHidden(true)
             }
+            
+            .onAppear {
+                msg = "Error"
+            }
         }
     }
     
     func login() async {
         do {
-            // 1
             let result = try await Amplify.Auth.signIn(
                 username: username,
                 password: password
             )
             switch result.nextStep {
-            // 2
             case .done:
                 print("login is done")
             default:
                 print(result.nextStep)
             }
         } catch {
+            let errorMessage = "\(error)"
+            if let firstLine = errorMessage.components(separatedBy: "\n").first {
+                msg = firstLine
+            } else {
+                msg = errorMessage
+            }
+            showingAlert = true
             print(error)
         }
     }
+
 }
 
 

@@ -26,6 +26,7 @@ struct Scan: View {
     @State private var showPicker : Bool = false
     @State private var isUsingCamera : Bool = false
     @ObservedObject var classifier: ImageClassifier = ImageClassifier()
+    @EnvironmentObject var userState: UserState
     
     @State private var showingSheet : Bool = false
 
@@ -37,7 +38,7 @@ struct Scan: View {
                 
                 NavigationLink(destination: ProductView(input: input), tag: 5, selection: self.$selection){}
                 
-                Text("Select a photo")
+                Text("Select a Photo")
                     .fontWeight(.bold)
                     .font(.largeTitle)
                     .underline()
@@ -49,11 +50,6 @@ struct Scan: View {
                 Image(uiImage: (profileImage ?? UIImage(systemName: "photo"))!)
                     .resizable()
                     .frame(width: 315, height: 315)
-                //                    .overlay(
-                //                        Rectangle()
-                //                            .stroke(Color.black, lineWidth: 2)
-                //                            .padding(-50)
-                //                    )
                 
                 Button(action: {
                     if(self.permissionGranted){
@@ -62,36 +58,28 @@ struct Scan: View {
                         self.requestPermissions()
                     }
                 }){
-                    Text("Upload Picture")
+                    Text("Upload Photo")
                 }
                 .actionSheet(isPresented: $showSheet){
                     ActionSheet(title: Text("Select Photo"),
                                 message: Text("Choose photo to upload"),
                                 buttons: [
                                     .default(Text("Choose from Photo Library")){
-                                        // when user want to pick pic from the library
                                         self.showPicker = true
                                     },
-                                    .default(Text("Take a Picture from Camera")){
-                                        // when user want to open camera and click new pic
-                                        //                        selection = 1
+                                    .default(Text("Take a Photo from Camera")){
                                         guard UIImagePickerController.isSourceTypeAvailable(.camera)
                                         else{
                                             print(#function, "Camera is not available")
                                             return
                                         }
-                                        
                                         print(#function, "Camera is available")
-                                        //camera is available, open the  camera to allow taking pic
                                         selection = 1
-                                        //                        self.isUsingCamera = true
-                                        //                        self.showPicker = true
                                     },
                                     .cancel()
                                 ]
-                                
-                    )//action sheet
-                }//.actionsheet
+                    )
+                }
                 .padding(.top, 35)
                 .padding(.bottom, 55)
                 
@@ -109,72 +97,60 @@ struct Scan: View {
                     .offset(x: 0, y:-30)
                 
                 Spacer()
-                //            Button(action: {
-                //                print("DO ML KIT")
-                //
-                //            }){
-                //                Text("SCAN")
-                //                    .modifier(CustomTextM(fontName: "MavenPro-Bold", fontSize: 16, fontColor: Color.white))
-                //
-                //                    .frame(maxWidth: 280)
-                //                    .frame(height: 56, alignment: .leading)
-                //                    .background(Color.blue)
-                //                    .cornerRadius(7)
-                //            }//button
                 
                 HStack {
-                    
-                    
                     Button(action: {
                         self.selection = 5
-                        
                     }) {
                         Text("SEARCH")
                             .modifier(CustomTextM(fontName: "MavenPro-Bold", fontSize: 16, fontColor: Color.white))
-                        
                             .frame(maxWidth: 200)
                             .frame(height: 70, alignment: .leading)
                             .background(Color.blue)
                             .cornerRadius(7)
                             .offset(x: 0, y:-40)
                     }
-                    
-                    
+                    .disabled(input.isEmpty)
+                    .opacity(input.isEmpty ? 0.5 : 1.0)
                 }
-                
-                
-                //            Button("Show Sheet") {
-                //                        showingSheet.toggle()
-                //                    }
-                //                    .sheet(isPresented: $showingSheet) {
-                //                        SheetView()
-                //                    }
-                
                 
                 Spacer()
                 
-            }//vstack
-            
+            }
             .offset(y: 0)
             .fullScreenCover(isPresented: $showPicker){
                 if(isUsingCamera){
                     //show camera selction
                 }else{
-                    //open photoLibrary
                     LibraryPicker(selectedImage: self.$profileImage, isPresented: self.$showPicker, input: self.$input)
-                    
-                    
                 }
             }
             .onAppear(){
                 checkPermissions()
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(
+                        action: {
+                            Task {
+                                await signOut()
+                            }
+                        }) {
+                            
+                            HStack {
+                                Text(userState.username)
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                            }
+                            
+                        }
+                }
+            }
+            
             
         }
         
     }
-    
-    
 
     private func checkPermissions(){
         switch PHPhotoLibrary.authorizationStatus(){
@@ -208,64 +184,12 @@ struct Scan: View {
     
     func signOut() async {
         do {
-            // 1
             _ = await Amplify.Auth.signOut()
             print("Signed out")
-            // 2
             _ = try await Amplify.DataStore.clear()
         } catch {
             print(error)
         }
     }
 }
-
-
-//struct SheetView: View {
-//    @Environment(\.dismiss) var dismiss
-//    @State private var selection: Int? = nil
-//    var product : String
-//
-//
-//    var body: some View {
-//
-//
-//
-//        NavigationView{
-//            VStack{
-//
-//                Spacer()
-//
-//                Text("Confirm Scan Results")
-//                    .font(.largeTitle)
-//
-//                Spacer()
-//
-//                Text(product)
-//                    .font(.title)
-//
-//                HStack{
-//                    Button(action:{
-//                        dismiss()
-//                    }){
-//                        Image(systemName: "xmark.circle")
-//                            .font(.largeTitle)
-//                    }
-//                    Button(action:{
-//
-//                        selection = 2
-//                        print("WHY")
-//                    }){
-//                        Image(systemName: "checkmark.circle")
-//                            .font(.largeTitle)
-//
-//                    }
-//
-//                }
-//
-//                Spacer()
-//            }//vstack
-//        }
-//    }
-//
-//}
 
